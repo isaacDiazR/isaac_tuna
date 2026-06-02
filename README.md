@@ -2,6 +2,14 @@
 
 Afinador cromático para guitarra desarrollado en Flutter. Escucha el audio del micrófono en tiempo real, detecta la frecuencia de la nota tocada y muestra qué tan afinada está la cuerda.
 
+## Capturas de pantalla
+
+<p align="center">
+  <img src="screenshots/tuner.png" width="270" alt="Pantalla del afinador"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="screenshots/settings.png" width="270" alt="Selección de afinación"/>
+</p>
+
 ## Funcionalidades
 
 - Detección de tono en tiempo real mediante el algoritmo MPM (McLeod Pitch Method)
