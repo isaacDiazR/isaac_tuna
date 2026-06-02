@@ -1,16 +1,45 @@
-# isaac_tuna
+# IsaacTuna 🎸
 
-A new Flutter project.
+Afinador cromático para guitarra desarrollado en Flutter. Escucha el audio del micrófono en tiempo real, detecta la frecuencia de la nota tocada y muestra qué tan afinada está la cuerda.
 
-## Getting Started
+## Funcionalidades
 
-This project is a starting point for a Flutter application.
+- Detección de tono en tiempo real mediante el algoritmo MPM (McLeod Pitch Method)
+- Indicador visual de afinación: bemol, afinada o sostenida (en cents)
+- Sugerencia automática de la cuerda más cercana al tono detectado
+- 10 perfiles de afinación predefinidos: Estándar, Drop D, Open G, Open D, Open E, Open A, DADGAD, Drop C, Eb y D Full Step Down
+- Procesamiento de audio en isolate secundario para no bloquear la UI
+- Soporte para Android e iOS
 
-A few resources to get you started if this is your first Flutter project:
+## Tecnologías
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+| Tecnología | Uso |
+|---|---|
+| Flutter / Dart | Framework principal |
+| `record ^5.0.0` | Captura de audio PCM desde el micrófono |
+| `pitch_detector_dart ^0.0.7` | Detección de frecuencia (algoritmo MPM) |
+| `flutter_riverpod ^2.0.0` | Gestión de estado reactivo |
+| `permission_handler ^11.0.0` | Solicitud de permisos de micrófono en runtime |
+| `dart:isolate` / `compute` | Análisis de pitch fuera del hilo principal |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Arquitectura
+
+Sigue Clean Architecture con tres capas:
+
+```
+lib/
+├── core/          # Constantes, utilidades y tema
+├── domain/        # Modelos, repositorios abstractos y casos de uso
+├── data/          # Implementación concreta de captura de audio
+├── presentation/  # UI (pantalla del afinador y ajustes)
+└── providers/     # Providers de Riverpod
+```
+
+## Cómo ejecutar
+
+```bash
+flutter pub get
+flutter run
+```
+
+Se requiere un dispositivo físico o emulador con acceso a micrófono.
